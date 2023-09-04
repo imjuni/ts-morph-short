@@ -1,12 +1,7 @@
-# TypeScript cli boilerplate
+# ts-morph-short
 
-## installation
+ts-morph shortcut utility
 
-```bash
-# Clone the boilerplate:
-git clone --depth=1 \
-  https://github.com/imjuni/typescript-cli-boilerplate.git \
-  your-project-name
-
-cd your-project-name
-```
+| function | description |
+| - | - |
+| getFileImportInfos | get import information on specific file |
