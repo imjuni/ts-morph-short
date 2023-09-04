@@ -1,6 +1,6 @@
 {
   "name": "ts-morph-short",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "TypeScript cli boilerplate",
   "engines": {
     "node": ">=16"
@@ -25,9 +25,13 @@
     "clean": "rimraf dist src/index.ts",
     "lint": "eslint --cache .",
     "lint-staged": "lint-staged",
+    "prepub": "npm run bundle",
     "pub": "npm publish --registry http://localhost:8901",
+    "postpub": "npm run ctix:remove",
     "unpub": "npm unpublish typescript-cli-boilerplate@$npm_package_version --registry http://localhost:8901 --force",
+    "prepub:prod": "npm run bundle",
     "pub:prod": "RELEASE_MODE=true npm publish",
+    "postpub:prod": "npm run ctix:remove",
     "dd": "deps-diff md -d prod -d dev --title-list-type '*' --deps-list-type '*' --content-list-type '*'",
     "prepare": "husky install"
   },
