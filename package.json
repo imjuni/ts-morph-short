@@ -1,7 +1,7 @@
 {
   "name": "ts-morph-short",
   "version": "0.3.1",
-  "description": "ts-morph shortcut function ",
+  "description": "ts-morph shortcut function",
   "engines": {
     "node": ">=16"
   },
@@ -11,15 +11,17 @@
     "test": "jest --coverage",
     "prebuild": "npm run clean",
     "build": "tsc --incremental --project tsconfig.prod.json",
-    "dts": "tsc --project tsconfig.prod.json --rootDir 'src' --declaration --emitDeclarationOnly --declarationDir dist/types",
-    "dts-alias": "tsc-alias -p ./tsconfig.prod.json --verbose --silent false",
+    "dts": "tsc --project tsconfig.prod.json --rootDir 'src' --declaration --emitDeclarationOnly --declarationDir dist/input/types",
+    "dts:bundle": "dts-bundle-generator --project ./tsconfig.prod.json dist/input/types/index.d.ts -o dist/types/index.d.ts --no-check --no-banner",
+    "dts:clean": "rimraf dist/input",
     "esbuild-cjs": "FORMAT=cjs node .configs/esbuild.mjs",
     "esbuild-esm": "FORMAT=esm node .configs/esbuild.mjs",
     "prebundle-pack": "npm run ctix",
     "bundle-pack": "run-p esbuild-cjs esbuild-esm dts",
-    "postbundle-pack": "npm run ctix:remove",
+    "postbundle-pack": "run-p ctix:remove",
     "prebundle": "npm run clean",
-    "bundle": "run-s bundle-pack dts-alias",
+    "bundle": "run-s bundle-pack dts:bundle",
+    "postbundle": "run-s dts:clean",
     "ctix": "ctix single -p ./tsconfig.json -o ./src",
     "ctix:remove": "rimraf src/index.ts",
     "clean": "rimraf dist src/index.ts",
@@ -73,6 +75,7 @@
     "cross-env": "^7.0.3",
     "ctix": "^1.8.2",
     "deps-diff": "^1.0.2",
+    "dts-bundle-generator": "^8.0.1",
     "esbuild": "^0.19.2",
     "eslint": "^8.48.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -94,7 +97,6 @@
     "rimraf": "^5.0.1",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
-    "tsc-alias": "^1.8.7",
     "tslib": "^2.6.2"
   },
   "dependencies": {

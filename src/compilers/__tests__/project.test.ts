@@ -40,7 +40,6 @@ describe('getTsConfig', () => {
         isolatedModules: true,
         noUncheckedIndexedAccess: true,
         baseUrl: '.',
-        rootDir: '.',
         esModuleInterop: true,
         experimentalDecorators: true,
         emitDecoratorMetadata: true,
