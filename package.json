@@ -1,6 +1,6 @@
 {
   "name": "ts-morph-short",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "ts-morph shortcut function",
   "engines": {
     "node": ">=16"
@@ -100,7 +100,7 @@
     "tslib": "^2.6.2"
   },
   "dependencies": {
-    "ts-morph": "^19.0.0",
+    "ts-morph": "^20.0.0",
     "typescript": "^5.2.2"
   },
   "lint-staged": {
