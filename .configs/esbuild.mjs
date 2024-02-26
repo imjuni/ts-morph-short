@@ -1,6 +1,7 @@
 import * as esbuild from 'esbuild';
-import fs from 'fs';
-import path from 'path';
+import readPkg from 'read-pkg';
+
+const pkg = readPkg.sync();
 
 if (process.env.FORMAT !== 'cjs' && process.env.FORMAT !== 'esm') {
   console.log(`support "cjs" or "esm"`);
@@ -9,21 +10,25 @@ if (process.env.FORMAT !== 'cjs' && process.env.FORMAT !== 'esm') {
   process.exit(1);
 }
 
-console.log(`esbuild: ${process.env.FORMAT}`);
-const packageJson = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), 'package.json')).toString(),
-);
+console.log('esbuild start bundling');
+console.log(`version: ${pkg.version}`);
+console.log(`FORMAT: ${process.env.FORMAT}`);
+console.log(`MINIFY: ${process.env.FORMAT}`);
+
+console.log('external: ');
 
 await esbuild.build({
   entryPoints: ['src/index.ts'],
+  target: 'es2021',
   bundle: true,
   sourcemap: true,
-  // minify: true,
+  platform: 'node',
+  minify: process.env.MINIFY === 'true',
   outfile: process.env.FORMAT === 'cjs' ? 'dist/cjs/index.cjs' : 'dist/esm/index.mjs',
   format: process.env.FORMAT,
   external: [
-    ...Object.keys(packageJson.devDependencies ?? {}),
-    ...Object.keys(packageJson.dependencies ?? {}),
-    ...Object.keys(packageJson.peerDependencies ?? {}),
+    ...Object.keys(pkg.dependencies ?? {}),
+    ...Object.keys(pkg.devDependencies ?? {}),
+    ...Object.keys(pkg.peerDependencies ?? {}),
   ],
 });

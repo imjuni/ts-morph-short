@@ -1,9 +1,10 @@
 import path from 'path';
 import getTsConfig from 'src/compilers/getTsConfig';
 import getTsProject from 'src/compilers/getTsProject';
+import { describe, expect, it } from 'vitest';
 
 describe('getTsProject', () => {
-  test('pass', () => {
+  it('pass', () => {
     const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
     const project = getTsProject(tsconfigPath, { sourceMap: true });
     expect(project).toBeDefined();
@@ -11,12 +12,12 @@ describe('getTsProject', () => {
 });
 
 describe('getTsConfig', () => {
-  test('pass', () => {
+  it('pass', () => {
     const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
     const tsconfig = getTsConfig(tsconfigPath);
 
     expect(tsconfig).toMatchObject({
-      extends: '@tsconfig/node16/tsconfig.json',
+      extends: '@tsconfig/node18/tsconfig.json',
       'ts-node': {
         transpileOnly: true,
         files: true,
@@ -50,7 +51,7 @@ describe('getTsConfig', () => {
     });
   });
 
-  test('exception', () => {
+  it('exception', () => {
     const tsconfigPath = path.join(
       process.cwd(),
       'src',
