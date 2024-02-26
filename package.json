@@ -6,11 +6,9 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "tsx src/cli.ts",
     "debug": "node --inspect-brk -r ts-node/register src/cli.ts",
     "test": "vitest --run --coverage",
-    "prebuild": "npm run clean",
-    "build": "tsc --incremental --project tsconfig.prod.json",
+    "build": "pnpm run clean && tsc --incremental --project tsconfig.prod.json",
     "ctix": "ctix build --config .configs/.ctirc",
     "ctix-rm": "ctix remove --config .configs/.ctirc --force-yes --remove-backup",
     "dts": "tsc -p tsconfig.dts.json",
@@ -25,14 +23,10 @@
     "clean": "rimraf dist src/index.ts",
     "lint": "eslint --cache .",
     "lint-staged": "lint-staged",
-    "prepub": "npm run bundle",
-    "pub": "npm publish --registry http://localhost:8901",
-    "postpub": "npm run ctix:remove",
+    "pub": "pnpm run bundle && RELEASE_MODE=true npm publish --registry http://localhost:8901",
     "unpub": "npm unpublish ts-morph-short@$npm_package_version --registry http://localhost:8901 --force",
-    "prepub:prod": "npm run bundle",
-    "pub:prod": "RELEASE_MODE=true npm publish",
-    "postpub:prod": "npm run ctix:remove",
-    "dd": "deps-diff md -d prod -d dev --title-list-type '*' --deps-list-type '*' --content-list-type '*'",
+    "pub:prod": "pnpm run bundle && RELEASE_MODE=true npm publish",
+    "dd": "deps-diff md -d prod -d dev --title-list-type 'm' --deps-list-type 'm' --content-list-type 'm'",
     "prepare": "husky install"
   },
   "repository": {

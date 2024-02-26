@@ -1,7 +1,7 @@
-import path from 'path';
+import path from 'node:path';
 import { isExternal } from 'src/compilers/getFileImportInfos';
-import getNamedBindingName from 'src/compilers/getNamedBindingName';
-import getTsProject from 'src/compilers/getTsProject';
+import { getNamedBindingName } from 'src/compilers/getNamedBindingName';
+import { getTsProject } from 'src/compilers/getTsProject';
 import type * as tsm from 'ts-morph';
 import { beforeAll, describe, expect, it } from 'vitest';
 

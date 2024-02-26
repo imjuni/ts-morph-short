@@ -1,4 +1,4 @@
-export default interface INamedBindingName {
+export interface INamedBindingName {
   kind: 'namespace' | 'named';
   name: string;
 }
