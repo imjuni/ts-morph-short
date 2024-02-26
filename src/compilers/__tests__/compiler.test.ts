@@ -1,6 +1,6 @@
 import path from 'node:path';
-import getFileImportInfos from 'src/compilers/getFileImportInfos';
-import getTsProject from 'src/compilers/getTsProject';
+import { getFileImportInfos } from 'src/compilers/getFileImportInfos';
+import { getTsProject } from 'src/compilers/getTsProject';
 import type * as tsm from 'ts-morph';
 import { beforeAll, describe, expect, it } from 'vitest';
 
@@ -23,7 +23,7 @@ describe('getTsProject', () => {
       {
         name: 'tsm',
         sourceFilePath: path.join(process.cwd(), '/src/compilers/getCase01.ts'),
-        moduleFilePath: path.join(process.cwd(), '/node_modules/ts-morph/lib/ts-morph.d.ts'),
+        // moduleFilePath: path.join(process.cwd(), '/node_modules/ts-morph/lib/ts-morph.d.ts'),
         isExternal: true,
         isNamespace: true,
       },
@@ -51,21 +51,21 @@ import type INamedBindingName from 'src/compilers/interfaces/INamedBindingName';
       {
         name: 'tsm',
         sourceFilePath: path.join(process.cwd(), '/src/compilers/getCase02.ts'),
-        moduleFilePath: path.join(process.cwd(), '/node_modules/ts-morph/lib/ts-morph.d.ts'),
+        // moduleFilePath: path.join(process.cwd(), '/node_modules/ts-morph/lib/ts-morph.d.ts'),
         isExternal: true,
         isNamespace: true,
       },
       {
         name: 'default',
         sourceFilePath: path.join(process.cwd(), '/src/compilers/getCase02.ts'),
-        moduleFilePath: path.join(process.cwd(), '/src/compilers/interfaces/IFileImportInfo.ts'),
+        // moduleFilePath: path.join(process.cwd(), '/src/compilers/interfaces/IFileImportInfo.ts'),
         isExternal: false,
         isNamespace: false,
       },
       {
         name: 'INamedBindingName',
         sourceFilePath: path.join(process.cwd(), '/src/compilers/getCase02.ts'),
-        moduleFilePath: path.join(process.cwd(), '/src/compilers/interfaces/INamedBindingName.ts'),
+        // moduleFilePath: path.join(process.cwd(), '/src/compilers/interfaces/INamedBindingName.ts'),
         isExternal: false,
         isNamespace: false,
       },
@@ -95,14 +95,14 @@ import type INamedBindingName from 'src/compilers/interfaces/INamedBindingName';
       {
         name: 'ImportClause',
         sourceFilePath: path.join(process.cwd(), '/src/compilers/getCase03.ts'),
-        moduleFilePath: path.join(process.cwd(), '/node_modules/ts-morph/lib/ts-morph.d.ts'),
+        // moduleFilePath: path.join(process.cwd(), '/node_modules/ts-morph/lib/ts-morph.d.ts'),
         isExternal: true,
         isNamespace: false,
       },
       {
         name: 'SyntaxKind',
         sourceFilePath: path.join(process.cwd(), '/src/compilers/getCase03.ts'),
-        moduleFilePath: path.join(process.cwd(), '/node_modules/ts-morph/lib/ts-morph.d.ts'),
+        // moduleFilePath: path.join(process.cwd(), '/node_modules/ts-morph/lib/ts-morph.d.ts'),
         isExternal: true,
         isNamespace: false,
       },

@@ -1,6 +1,6 @@
-import path from 'path';
-import getTsConfig from 'src/compilers/getTsConfig';
-import getTsProject from 'src/compilers/getTsProject';
+import path from 'node:path';
+import { getTsConfig } from 'src/compilers/getTsConfig';
+import { getTsProject } from 'src/compilers/getTsProject';
 import { describe, expect, it } from 'vitest';
 
 describe('getTsProject', () => {

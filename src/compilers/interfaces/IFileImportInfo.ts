@@ -1,4 +1,4 @@
-export default interface IFileImportInfo {
+export interface IFileImportInfo {
   /**
    * import name
    */

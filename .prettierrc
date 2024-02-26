@@ -29,10 +29,18 @@
     },
     {
       "files": [
+        ".github/workflows/**/*.yml"
+      ],
+      "options": {
+        "parser": "yaml"
+      }
+    },
+    {
+      "files": [
         ".vscode/launch.json",
         ".vscode/settings.json",
-        ".swcrc",
         "tsconfig.eslint.json",
+        "tsconfig.dts.json",
         "tsconfig.prod.json",
         "tsconfig.json"
       ],

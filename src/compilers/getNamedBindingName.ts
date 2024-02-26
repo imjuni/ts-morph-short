@@ -1,8 +1,8 @@
-import type INamedBindingName from 'src/compilers/interfaces/INamedBindingName';
+import type { INamedBindingName } from 'src/compilers/interfaces/INamedBindingName';
 import type { ImportClause } from 'ts-morph';
 import { SyntaxKind } from 'ts-morph';
 
-export default function getNamedBindingName(
+export function getNamedBindingName(
   bindings: ReturnType<ImportClause['getNamedBindings']>,
 ): INamedBindingName[] {
   if (bindings == null) {

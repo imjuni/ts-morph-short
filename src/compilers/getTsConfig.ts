@@ -1,6 +1,6 @@
 import * as tsm from 'ts-morph';
 
-export default function getTsConfig(tsconfigPath: string): Record<string, unknown> {
+export function getTsConfig(tsconfigPath: string): Record<string, unknown> {
   const { config, error } = tsm.ts.readConfigFile(
     tsconfigPath,
     tsm.ts.sys.readFile.bind(tsm.ts.sys),
