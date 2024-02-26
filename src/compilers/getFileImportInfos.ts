@@ -1,5 +1,5 @@
-import { getNamedBindingName } from 'src/compilers/getNamedBindingName';
-import type { IFileImportInfo } from 'src/compilers/interfaces/IFileImportInfo';
+import { getNamedBindingName } from '#/compilers/getNamedBindingName';
+import type { IFileImportInfo } from '#/compilers/interfaces/IFileImportInfo';
 import type * as tsm from 'ts-morph';
 
 export function isExternal(sourceFile?: tsm.SourceFile) {

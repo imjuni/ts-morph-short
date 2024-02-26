@@ -1,6 +1,7 @@
+import { getFileImportInfos } from '#/compilers/getFileImportInfos';
+import { getTsProject } from '#/compilers/getTsProject';
 import path from 'node:path';
-import { getFileImportInfos } from 'src/compilers/getFileImportInfos';
-import { getTsProject } from 'src/compilers/getTsProject';
+
 import type * as tsm from 'ts-morph';
 import { beforeAll, describe, expect, it } from 'vitest';
 

@@ -1,4 +1,4 @@
-import type { INamedBindingName } from 'src/compilers/interfaces/INamedBindingName';
+import type { INamedBindingName } from '#/compilers/interfaces/INamedBindingName';
 import type { ImportClause } from 'ts-morph';
 import { SyntaxKind } from 'ts-morph';
 
