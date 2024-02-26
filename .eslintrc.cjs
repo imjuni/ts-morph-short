@@ -49,7 +49,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['jest.config.cjs'],
+      files: ['vitest.config.ts'],
       rules: {
         'import/no-extraneous-dependencies': ['off'],
         '@typescript-eslint/no-unsafe-call': ['off'],

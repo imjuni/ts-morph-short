@@ -27,14 +27,8 @@
   "eslint.validate": ["typescript", "typescriptreact"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "files.associations": {
-    "**/.ctiignore": "jsonc",
     ".ctirc": "jsonc"
   },
   "editor.formatOnSave": true,
-  "formattingToggle.affects": ["editor.formatOnSave"],
-  "jest.autoRun": {
-    "watch": false
-    // "onStartup": ["all-tests"],
-    // "onSave": "test-src-file"
-  }
+  "formattingToggle.affects": ["editor.formatOnSave"]
 }

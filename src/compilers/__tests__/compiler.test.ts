@@ -1,7 +1,8 @@
-import path from 'path';
+import path from 'node:path';
 import getFileImportInfos from 'src/compilers/getFileImportInfos';
 import getTsProject from 'src/compilers/getTsProject';
 import type * as tsm from 'ts-morph';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 const context: { project: tsm.Project } = {} as any;
 
@@ -10,7 +11,7 @@ beforeAll(async () => {
 });
 
 describe('getTsProject', () => {
-  test('pass - 1', () => {
+  it('pass - 1', () => {
     const filePath = 'src/compilers/getCase01.ts';
     const content = `import * as tsm from 'ts-morph';\nimport IFileImportInfo from './interfaces/IFileImportInfo';`;
 
@@ -36,7 +37,7 @@ describe('getTsProject', () => {
     ]);
   });
 
-  test('pass - 2', () => {
+  it('pass - 2', () => {
     const filePath = 'src/compilers/getCase02.ts';
     const content = `import * as tsm from 'ts-morph';
 import { default as IFileImportInfo } from './interfaces/IFileImportInfo';
@@ -71,7 +72,7 @@ import type INamedBindingName from 'src/compilers/interfaces/INamedBindingName';
     ]);
   });
 
-  test('pass - 3', () => {
+  it('pass - 3', () => {
     const filePath = 'src/compilers/getCase02.ts';
     const content = `import 'jest';`;
 
@@ -82,7 +83,7 @@ import type INamedBindingName from 'src/compilers/interfaces/INamedBindingName';
     expect(infos).toMatchObject([]);
   });
 
-  test('pass - 4', () => {
+  it('pass - 4', () => {
     const filePath = 'src/compilers/getCase03.ts';
     const content = `import type { ImportClause, SyntaxKind } from 'ts-morph';`;
 

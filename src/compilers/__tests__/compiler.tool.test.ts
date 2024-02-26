@@ -3,6 +3,7 @@ import { isExternal } from 'src/compilers/getFileImportInfos';
 import getNamedBindingName from 'src/compilers/getNamedBindingName';
 import getTsProject from 'src/compilers/getTsProject';
 import type * as tsm from 'ts-morph';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 const context: { project: tsm.Project } = {} as any;
 
@@ -11,12 +12,12 @@ beforeAll(async () => {
 });
 
 describe('isExternal', () => {
-  test('pass - undefined', () => {
+  it('pass - undefined', () => {
     const r = isExternal(undefined);
     expect(r).toBeTruthy();
   });
 
-  test('pass - sourceFile', () => {
+  it('pass - sourceFile', () => {
     const sourceFile = context.project.getSourceFileOrThrow('src/compilers/getFileImportInfos.ts');
     const r = isExternal(sourceFile);
     expect(r).toBeFalsy();
@@ -24,7 +25,7 @@ describe('isExternal', () => {
 });
 
 describe('getNamedBindingName', () => {
-  test('pass - undefined', () => {
+  it('pass - undefined', () => {
     const r = getNamedBindingName(undefined);
     expect(r).toMatchObject([]);
   });
