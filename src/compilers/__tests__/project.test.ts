@@ -1,53 +1,89 @@
-import { getTsConfig } from '#/compilers/getTsConfig';
-import { getTsProject } from '#/compilers/getTsProject';
+import { getTypeScriptConfig } from '#/compilers/getTypeScriptConfig';
+import { getTypeScriptProject } from '#/compilers/getTypeScriptProject';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-describe('getTsProject', () => {
+describe('getTypeScriptProject', () => {
   it('pass', () => {
     const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
-    const project = getTsProject(tsconfigPath, { sourceMap: true });
+    const project = getTypeScriptProject(tsconfigPath, { sourceMap: true });
     expect(project).toBeDefined();
   });
 });
 
-describe('getTsConfig', () => {
+describe('getTypeScriptConfig', () => {
   it('pass', () => {
     const tsconfigPath = path.join(process.cwd(), 'tsconfig.json');
-    const tsconfig = getTsConfig(tsconfigPath);
+    const tsconfig = getTypeScriptConfig(tsconfigPath);
 
     expect(tsconfig).toMatchObject({
-      extends: '@tsconfig/node18/tsconfig.json',
-      'ts-node': {
-        transpileOnly: true,
-        files: true,
-        esm: true,
-        compilerOptions: {},
-        require: ['tsconfig-paths/register'],
-      },
-      compilerOptions: {
+      options: {
+        lib: ['lib.dom.d.ts', 'lib.dom.iterable.d.ts', 'lib.es2020.d.ts'],
+        module: 100,
+        target: 9,
+        strict: true,
+        esModuleInterop: true,
+        skipLibCheck: true,
+        forceConsistentCasingInFileNames: true,
+        moduleResolution: 3,
         declaration: true,
-        lib: ['DOM', 'DOM.Iterable', 'ES2020'],
         declarationMap: true,
         sourceMap: true,
-        outDir: './dist',
         removeComments: true,
         importHelpers: true,
-        newLine: 'lf',
-        strict: true,
+        newLine: 1,
         noImplicitAny: false,
         noImplicitReturns: true,
         noFallthroughCasesInSwitch: true,
         isolatedModules: true,
         noUncheckedIndexedAccess: true,
-        baseUrl: '.',
-        esModuleInterop: true,
+        paths: {
+          '#/*': ['src/*'],
+        },
         experimentalDecorators: true,
         emitDecoratorMetadata: true,
         pretty: true,
       },
-      include: ['src/**/*.ts'],
-      exclude: ['dist/**', '.configs/**'],
+      raw: {
+        extends: '@tsconfig/node18/tsconfig.json',
+        'ts-node': {
+          transpileOnly: true,
+          files: true,
+          esm: true,
+          compilerOptions: {},
+          require: ['tsconfig-paths/register'],
+        },
+        compilerOptions: {
+          declaration: true,
+          lib: ['DOM', 'DOM.Iterable', 'ES2020'],
+          declarationMap: true,
+          sourceMap: true,
+          outDir: './dist',
+          removeComments: true,
+          importHelpers: true,
+          newLine: 'lf',
+          strict: true,
+          noImplicitAny: false,
+          noImplicitReturns: true,
+          noFallthroughCasesInSwitch: true,
+          isolatedModules: true,
+          noUncheckedIndexedAccess: true,
+          baseUrl: '.',
+          rootDir: '.',
+          paths: {
+            '#/*': ['src/*'],
+          },
+          esModuleInterop: true,
+          experimentalDecorators: true,
+          emitDecoratorMetadata: true,
+          pretty: true,
+        },
+        include: ['src/**/*.ts'],
+        exclude: ['dist/**', '.configs/**'],
+        compileOnSave: false,
+      },
+      errors: [],
+      compileOnSave: false,
     });
   });
 
@@ -62,7 +98,7 @@ describe('getTsConfig', () => {
     );
 
     expect(() => {
-      getTsConfig(tsconfigPath);
+      getTypeScriptConfig(tsconfigPath);
     }).toThrow();
   });
 });
