@@ -1,6 +1,6 @@
 import * as tsm from 'ts-morph';
 
-export async function getTypeScriptProject(
+export function getTypeScriptProject(
   tsconfigPath: string,
   compilerOptions?: tsm.ts.CompilerOptions,
 ) {
