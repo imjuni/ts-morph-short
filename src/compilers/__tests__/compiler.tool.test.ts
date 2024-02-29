@@ -1,6 +1,6 @@
 import { isExternal } from '#/compilers/getFileImportInfos';
 import { getNamedBindingName } from '#/compilers/getNamedBindingName';
-import { getTsProject } from '#/compilers/getTsProject';
+import { getTypeScriptProject } from '#/compilers/getTypeScriptProject';
 import path from 'node:path';
 import type * as tsm from 'ts-morph';
 import { beforeAll, describe, expect, it } from 'vitest';
@@ -8,7 +8,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 const context: { project: tsm.Project } = {} as any;
 
 beforeAll(async () => {
-  context.project = await getTsProject(path.join(process.cwd(), 'tsconfig.json'));
+  context.project = await getTypeScriptProject(path.join(process.cwd(), 'tsconfig.json'));
 });
 
 describe('isExternal', () => {
