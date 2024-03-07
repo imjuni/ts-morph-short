@@ -62,8 +62,8 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^18.15.3",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "@typescript-eslint/parser": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
     "@vitest/coverage-v8": "^1.3.1",
     "cross-env": "^7.0.3",
     "ctix": "^2.4.0",
@@ -71,11 +71,11 @@
     "esbuild": "^0.20.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsdoc": "^48.2.0",
+    "eslint-plugin-jsdoc": "^48.2.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^5.1.3",
     "husky": "^9.0.11",
@@ -86,7 +86,7 @@
     "prettier-plugin-organize-imports": "^3.2.4",
     "read-pkg": "^5.2.0",
     "rimraf": "^5.0.5",
-    "rollup": "^4.12.0",
+    "rollup": "^4.12.1",
     "rollup-plugin-dts": "^6.1.0",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.8",
@@ -96,8 +96,8 @@
   },
   "dependencies": {
     "ts-morph": "^21.0.1",
-    "type-fest": "^4.10.3",
-    "typescript": "^5.3.3"
+    "type-fest": "^4.11.1",
+    "typescript": "^5.4.2"
   },
   "overrides": {
     "eslint-config-airbnb-typescript": {
