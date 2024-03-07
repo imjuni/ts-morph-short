@@ -1,15 +1,12 @@
 import { getFileImportInfos } from '#/compilers/getFileImportInfos';
 import { getTypeScriptProject } from '#/compilers/getTypeScriptProject';
 import path from 'node:path';
-
 import type * as tsm from 'ts-morph';
-import { beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
-const context: { project: tsm.Project } = {} as any;
-
-beforeAll(async () => {
-  context.project = await getTypeScriptProject(path.join(process.cwd(), 'tsconfig.json'));
-});
+const context: { project: tsm.Project } = {
+  project: getTypeScriptProject(path.join(process.cwd(), 'tsconfig.json')),
+};
 
 describe('getTsProject', () => {
   it('pass - 1', () => {

@@ -1,68 +1,7 @@
-import { getNamedBindingName } from '#/compilers/getNamedBindingName';
+import { getDefaultImport } from '#/compilers/getDefaultImport';
+import { getNamedImport } from '#/compilers/getNamedImport';
 import type { IFileImportInfo } from '#/compilers/interfaces/IFileImportInfo';
 import type * as tsm from 'ts-morph';
-
-export function isExternal(sourceFile?: tsm.SourceFile) {
-  if (sourceFile == null) {
-    return true;
-  }
-
-  return sourceFile.isFromExternalLibrary() || sourceFile.isInNodeModules();
-}
-
-export function getDefaultImport(
-  identifier: tsm.Identifier,
-  sourceFile: tsm.SourceFile,
-  moduleSourceFile?: tsm.SourceFile,
-): IFileImportInfo[] {
-  const name = identifier.getText();
-
-  return [
-    {
-      name,
-      sourceFilePath: sourceFile.getFilePath().toString(),
-      moduleFilePath: moduleSourceFile?.getFilePath().toString(),
-      isExternal: isExternal(moduleSourceFile),
-      isNamespace: false,
-    },
-  ] satisfies IFileImportInfo[];
-}
-
-export function getNamedImport(
-  importClause: tsm.ImportClause,
-  sourceFile: tsm.SourceFile,
-  moduleSourceFile?: tsm.SourceFile,
-): IFileImportInfo[] {
-  const namedBindings = importClause?.getNamedBindings();
-
-  if (namedBindings == null) {
-    return [];
-  }
-
-  const names = getNamedBindingName(namedBindings);
-
-  if (moduleSourceFile == null) {
-    return names.map((name) => {
-      return {
-        name: name.name,
-        sourceFilePath: sourceFile.getFilePath().toString(),
-        moduleFilePath: undefined,
-        isExternal: true,
-        isNamespace: name.kind === 'namespace',
-      } satisfies IFileImportInfo;
-    });
-  }
-
-  return names.map((name) => {
-    return {
-      name: name.name,
-      sourceFilePath: sourceFile.getFilePath().toString(),
-      moduleFilePath: moduleSourceFile.getFilePath().toString(),
-      isExternal: isExternal(moduleSourceFile),
-      isNamespace: name.kind === 'namespace',
-    } satisfies IFileImportInfo;
-  });
-}
 
 export function getFileImportInfos(
   project: tsm.Project,
