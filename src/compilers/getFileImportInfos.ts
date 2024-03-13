@@ -1,12 +1,9 @@
 import { getDefaultImport } from '#/compilers/getDefaultImport';
 import { getNamedImport } from '#/compilers/getNamedImport';
-import type { IFileImportInfo } from '#/compilers/interfaces/IFileImportInfo';
+import type { IImportInfo } from '#/compilers/interfaces/IImportInfo';
 import type * as tsm from 'ts-morph';
 
-export function getFileImportInfos(
-  project: tsm.Project,
-  sourceFilePath: string,
-): IFileImportInfo[] {
+export function getFileImportInfos(project: tsm.Project, sourceFilePath: string): IImportInfo[] {
   const sourceFile = project.getSourceFileOrThrow(sourceFilePath);
   const importDeclarations = sourceFile.getImportDeclarations();
 

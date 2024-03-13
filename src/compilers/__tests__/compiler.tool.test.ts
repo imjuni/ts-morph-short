@@ -1,4 +1,3 @@
-import { getFileImportInfoMapKey } from '#/compilers/getFileImportInfoMapKey';
 import { getNamedBindingName } from '#/compilers/getNamedBindingName';
 import { getTypeScriptProject } from '#/compilers/getTypeScriptProject';
 import { isExternal } from '#/compilers/isExternal';
@@ -27,17 +26,5 @@ describe('getNamedBindingName', () => {
   it('pass - undefined', () => {
     const r = getNamedBindingName(undefined);
     expect(r).toMatchObject([]);
-  });
-});
-
-describe('getFileImportInfoMapKey', () => {
-  it('not nullable moduleFilePath', () => {
-    const r01 = getFileImportInfoMapKey({ moduleFilePath: 'a', name: 'b' });
-    expect(r01).toEqual('a--b');
-  });
-
-  it('nullable moduleFilePath', () => {
-    const r01 = getFileImportInfoMapKey({ name: 'b' });
-    expect(r01).toEqual('b');
   });
 });

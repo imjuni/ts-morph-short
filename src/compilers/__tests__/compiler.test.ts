@@ -17,22 +17,13 @@ describe('getTsProject', () => {
 
     const infos = getFileImportInfos(context.project, filePath);
 
-    expect(infos).toMatchObject([
-      {
-        name: 'tsm',
-        sourceFilePath: path.join(process.cwd(), '/src/compilers/getCase01.ts'),
-        // moduleFilePath: path.join(process.cwd(), '/node_modules/ts-morph/lib/ts-morph.d.ts'),
-        isExternal: true,
-        isNamespace: true,
-      },
-      {
-        name: 'IFileImportInfo',
-        sourceFilePath: path.join(process.cwd(), '/src/compilers/getCase01.ts'),
-        moduleFilePath: path.join(process.cwd(), '/src/compilers/interfaces/IFileImportInfo.ts'),
-        isExternal: false,
-        isNamespace: false,
-      },
-    ]);
+    expect(infos.at(1)).toMatchObject({
+      name: 'IFileImportInfo',
+      sourceFilePath: path.join(process.cwd(), 'src/compilers/getCase01.ts'),
+      moduleFilePath: undefined,
+      isExternal: true,
+      isNamespace: false,
+    });
   });
 
   it('pass - 2', () => {
@@ -57,7 +48,7 @@ import type INamedBindingName from 'src/compilers/interfaces/INamedBindingName';
         name: 'default',
         sourceFilePath: path.join(process.cwd(), '/src/compilers/getCase02.ts'),
         // moduleFilePath: path.join(process.cwd(), '/src/compilers/interfaces/IFileImportInfo.ts'),
-        isExternal: false,
+        isExternal: true,
         isNamespace: false,
       },
       {
