@@ -1,5 +1,5 @@
 import { getNamedBindingName } from '#/compilers/getNamedBindingName';
-import type { IFileImportInfo } from '#/compilers/interfaces/IFileImportInfo';
+import type { IImportInfo } from '#/compilers/interfaces/IImportInfo';
 import { isExternal } from '#/compilers/isExternal';
 import type * as tsm from 'ts-morph';
 
@@ -7,7 +7,7 @@ export function getNamedImport(
   importClause: tsm.ImportClause,
   sourceFile: tsm.SourceFile,
   moduleSourceFile?: tsm.SourceFile,
-): IFileImportInfo[] {
+): IImportInfo[] {
   const namedBindings = importClause?.getNamedBindings();
 
   if (namedBindings == null) {
@@ -24,7 +24,7 @@ export function getNamedImport(
         moduleFilePath: undefined,
         isExternal: true,
         isNamespace: name.kind === 'namespace',
-      } satisfies IFileImportInfo;
+      } satisfies IImportInfo;
     });
   }
 
@@ -35,6 +35,6 @@ export function getNamedImport(
       moduleFilePath: moduleSourceFile.getFilePath().toString(),
       isExternal: isExternal(moduleSourceFile),
       isNamespace: name.kind === 'namespace',
-    } satisfies IFileImportInfo;
+    } satisfies IImportInfo;
   });
 }

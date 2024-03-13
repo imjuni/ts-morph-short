@@ -1,4 +1,4 @@
-import type { IFileImportInfo } from '#/compilers/interfaces/IFileImportInfo';
+import type { IImportInfo } from '#/compilers/interfaces/IImportInfo';
 import { isExternal } from '#/compilers/isExternal';
 import type * as tsm from 'ts-morph';
 
@@ -6,7 +6,7 @@ export function getDefaultImport(
   identifier: tsm.Identifier,
   sourceFile: tsm.SourceFile,
   moduleSourceFile?: tsm.SourceFile,
-): IFileImportInfo[] {
+): IImportInfo[] {
   const name = identifier.getText();
 
   return [
@@ -17,5 +17,5 @@ export function getDefaultImport(
       isExternal: isExternal(moduleSourceFile),
       isNamespace: false,
     },
-  ] satisfies IFileImportInfo[];
+  ] satisfies IImportInfo[];
 }
